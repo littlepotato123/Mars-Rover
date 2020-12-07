@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const App = () => {
+const App: React.FC = () => {
    return (
     <View>
       <Text>Hello</Text>
