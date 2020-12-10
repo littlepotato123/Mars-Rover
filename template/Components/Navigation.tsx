@@ -1,41 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Text, View } from 'react-native';
-import { Pages } from '../Tools/Pages';
+import React from 'react';
+import { Button, View } from 'react-native';
+import { Pages } from '../Tools';
 
 type Props = {
     page: Pages,
     setPage: React.Dispatch<React.SetStateAction<Pages>>
 };
 
-const Navigation: React.FC<Props> = ({ page, setPage }) => {
-    const [text, setText] = useState<string>('');
-
-    useEffect(() => {
-        if(page == Pages.HOME) {
-            setText("Go To Control Center")
-        } else if(page == Pages.CONTROL) {
-            setText("Go To Home")
-        } else {
-            setText("Go to Home")
-        }
-    }, [page])
-    
-    const set = () => {
-        if(page == Pages.HOME) {
-            setPage(Pages.CONTROL)
-        } else if(page == Pages.CONTROL) {
-            setPage(Pages.HOME);
-        } else {
-            setPage(Pages.HOME);
-        }
-    };
-
-     return (
+const Navigation: React.FC<Props> = ({ page, setPage }): JSX.Element => {
+    return (
         <View>
-            <Text>Template Mars Rover</Text>
-            <Button title={text} onPress={set} />
+            <Button title="Control" onPress={() => setPage(Pages.CONTROL)} />
+            <Button title="Docs" onPress={() => setPage(Pages.DOCS)} />
+            <Button title="Data" onPress={() => setPage(Pages.DATA)} />
         </View>
     );
-};
+}
 
 export default Navigation;
