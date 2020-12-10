@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
+import Config from 'react-native-config';
 import Navigation from './Components/Navigation';
 import PageError from './Errors/PageError';
 import Control from './Pages/Control/Control';
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   const [display, setDisplay] = useState<JSX.Element | null>(null);
 
   useEffect(() => {
+    console.log(Config);
     switch(page) {
       case Pages.DATA:
         setDisplay(<Data />)
