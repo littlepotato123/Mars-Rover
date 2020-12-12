@@ -1,7 +1,6 @@
 export enum Pages {
     DATA,
-    CONTROL,
-    DOCS
+    CONTROL
 };
 
 export type Results = {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
+import Loading from '../../Components/Loading';
 import { Results } from '../../Tools';
+import ImageDisplay from './ImageDisplay';
 
 const Data = () => {
     const [data, setData] = useState<Results | null>(null);
@@ -13,7 +15,16 @@ const Data = () => {
 
     return (
         <View>
-            <Text>{data?.title}</Text>
+            {
+                data ? 
+                <View>
+                    <Text>{data.date}</Text>
+                    <Text>{data.explanation}</Text>
+                    <Text>{data.title}</Text>
+                    <ImageDisplay url={data.url} />
+                </View>
+                : <Loading />
+            }
         </View>
     );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Docs = () => {
+const Input = () => {
      return (
         <View>
-            <Text>Docs</Text>
+            <Text>Input</Text>
         </View>
     );
 }
 
-export default Docs;
+export default Input;
