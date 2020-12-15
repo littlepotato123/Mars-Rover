@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import Loading from '../../Components/Loading';
 
 type Props = {
@@ -12,7 +12,7 @@ const ImageDisplay: React.FC<Props> = ({ url }) => {
     useEffect(() => {
         setDisplay(
             <Image 
-                style={{ width:500, height: 500}}
+                style={styles.img}
                 source={{ uri: url }}
             />
         )
@@ -26,5 +26,12 @@ const ImageDisplay: React.FC<Props> = ({ url }) => {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    img: {
+        width: '200px',
+        height: '200px'
+    }
+});
 
 export default ImageDisplay;
