@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import Errors from './Components/Errors';
 import Navigation from './Components/Navigation';
-import Bluetooth from './Pages/Bluetooth';
 import Control from './Pages/Control';
 import Design from './Pages/Design';
 import Home from './Pages/Home';
@@ -32,7 +31,6 @@ const App = () => {
   return (
     <View>
       <Navigation pages={page} setPages={setPage} />
-      <Bluetooth />
       {display}
     </View>
   );

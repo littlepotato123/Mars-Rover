@@ -1,17 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-/*
-Components
-    - Directional Control
-*/
-
-const Design = () => {
+const Loading = () => {
     return (
         <View>
-            <Text>Design</Text>
+            <Text>Loading</Text>
         </View>
     );
 }
 
-export default Design;
+export default Loading;
