@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         padding: 10,
         margin: 5,
-        backgroundColor: 'blue',
+        backgroundColor: '#373a40',
         borderRadius: 10
     }
 });

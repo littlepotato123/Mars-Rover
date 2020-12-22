@@ -30,12 +30,12 @@ const Home = () => {
         <View>
             {
                 data ? 
-                <ScrollView>
+                <ScrollView style={{ paddingHorizontal: 10 }}>
                     <Text style={styles.title}>{data.title}</Text>
-                    <Text>{data.date}</Text>
+                    <Text style={styles.date}>{data.date}</Text>
                     <ImageDisplay url={data.url} width={300} height={300} />
-                    <Text>{data.explanation}</Text>
-                    <Text>Credit to {data.copyright}</Text>
+                    <Text style={styles.explanation}>{data.explanation}</Text>
+                    <Text style={styles.credit}>Credit to {data.copyright}</Text>
                 </ScrollView>
                 : <Loading />
             }
@@ -46,6 +46,23 @@ const Home = () => {
 const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 16
+    },
+    date: {
+        fontSize: 14,
+        textAlign: 'center',
+    },
+    explanation: {
+        lineHeight: 30,
+        fontSize: 15,
+        textAlign: 'center'
+    },
+    credit: {
+        paddingBottom: 150,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 14
     }
 });
 

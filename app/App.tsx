@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Errors from './Components/Errors';
 import Navigation from './Components/Navigation';
 import Control from './Pages/Control';
-import Design from './Pages/Design';
+import Demo from './Pages/Demo';
 import Home from './Pages/Home';
 import { Pages } from './Tools';
 
@@ -20,7 +20,7 @@ const App = () => {
         setDisplay(<Control />);
         break;
       case Pages.Design:
-        setDisplay(<Design />);
+        setDisplay(<Demo />);
         break;
       default: 
         setDisplay(<Errors />);
