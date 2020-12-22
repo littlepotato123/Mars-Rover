@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
-// import * as BleManager from 'react-native-ble-manager';
 
 /*
 Strucuture
@@ -12,6 +11,10 @@ Strucuture
 */
 
 const Control = () => {
+    useEffect(() => {
+        console.log("Hi");
+    }, [])
+
     return (
         <View>
             <Text>Control</Text>

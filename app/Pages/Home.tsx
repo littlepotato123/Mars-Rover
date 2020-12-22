@@ -35,7 +35,9 @@ const Home = () => {
                     <Text style={styles.date}>{data.date}</Text>
                     <ImageDisplay url={data.url} width={300} height={300} />
                     <Text style={styles.explanation}>{data.explanation}</Text>
-                    <Text style={styles.credit}>Credit to {data.copyright}</Text>
+                    {
+                        data.copyright ? <Text style={styles.credit}>Credit to {data.copyright}</Text> : <Text style={styles.credit}>Credit to NASA</Text>
+                    }
                 </ScrollView>
                 : <Loading />
             }

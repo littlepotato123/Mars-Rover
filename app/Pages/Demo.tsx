@@ -1,8 +1,6 @@
 import Slider from '@react-native-community/slider';
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
-import ImageDisplay from '../Components/ImageDisplay';
-import Loading from '../Components/Loading';
 
 /*
 Components
@@ -55,17 +53,9 @@ const Demo = () => {
         return Math.floor(Math.random() * (max - min) + min);
     };
 
-    const recieve = () => {
-        fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY')
-            .then(res => {
-                console.log(res);
-                return res.json()
-            })
-    };
-
     useEffect(() => {
-        recieve();
-    }, [])
+        
+    })
 
     return (
         <ScrollView>
@@ -120,17 +110,7 @@ const Demo = () => {
                     }} /></View>
                 }
                 <Text style={styles.title}>Vision</Text> 
-                <Button title="Recieve Data" color="#686d76" onPress={recieve} />
-                {
-                    data ? 
-                    <View>
-                        <Text>{data.camera.full_name}</Text>
-                        <Text>Date: {data.earth_date}</Text>
-                        <Text>Rover: {data.rover.name}</Text>
-                        <ImageDisplay width={400} height={400} url={data.img_src} />
-                    </View>
-                    : <Loading />
-                }
+                <Button title="Recieve Data" color="#686d76" onPress={() => Alert.alert('Fetching')} />
             </View>
         </ScrollView>
     );

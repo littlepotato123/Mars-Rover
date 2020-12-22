@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 const Loading = () => {
     return (
         <View>
-            <Text>Loading</Text>
+            <Text>Loading Data</Text>
         </View>
     );
 }
