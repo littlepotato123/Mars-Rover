@@ -1,21 +1,8 @@
 import Slider from '@react-native-community/slider';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import ImageDisplay from '../Components/ImageDisplay';
 
-/*
-Components
-    - Directional Movement
-        - Legs
-        - Wheels
-    - Vision
-        - Get Data
-        - Enable and Disable Path Finding
-    - Claw
-        - Change Vertical Incline Angle (Slider)
-        - Open Claw / Close Claw
-*/
-
-// Types for Fetches
 type Camera = {
     id: number;
     name: string;
@@ -42,6 +29,7 @@ type Photo = {
 
 type Data = {
     photos: Array<Photo>;
+    error?: string;
 }
 
 const Demo = () => {
@@ -53,9 +41,19 @@ const Demo = () => {
         return Math.floor(Math.random() * (max - min) + min);
     };
 
-    useEffect(() => {
-        
-    })
+    const recieve = () => {
+        fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=QcYbZYOKBkLGloclT5C8PDXetTDp5mgMcaf4Gxn7')
+            .then(res => res.json())
+            .then((data: Data) => {
+                if(data.error) {
+                    Alert.alert('Error Try Again in A few hours');
+                } else {
+                    const i: number = random(0, data.photos.length);
+                    setData(data.photos[i]);
+                }
+            })
+            .catch(e => console.log(e));
+    };
 
     return (
         <ScrollView>
@@ -100,17 +98,28 @@ const Demo = () => {
                 </View>
             </View>
             <View>
+                <Text style={styles.title}>Vision</Text>
+                <View style={styles.box}>
+                    {
+                        vision ? <View><Button color="#686d76" title="Disable AI" onPress={() => {
+                            Alert.alert('Disabling Vision and Pathfinding');
+                            setVision(false);
+                        }} /></View> : <View><Button color="#686d76" title="Enable AI" onPress={() => {
+                            Alert.alert('Enabled Pathfinding and Vision');
+                            setVision(true);
+                        }} /></View>
+                    }
+                    <Button title="Refresh Data" color="#686d76" onPress={recieve} />
+                </View>
                 {
-                    vision ? <View><Button color="#686d76" title="Disable" onPress={() => {
-                        Alert.alert('Disabling Vision and Pathfinding');
-                        setVision(false);
-                    }} /></View> : <View><Button color="#686d76" title="Enable" onPress={() => {
-                        Alert.alert('Enabled Pathfinding and Vision');
-                        setVision(true);
-                    }} /></View>
+                    data ? 
+                        <View>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18, textAlign: 'center' }}>{data.camera.full_name}</Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 15, textAlign: 'center' }}>{data.earth_date}</Text>
+                            <ImageDisplay url={data.img_src} width={400} height={400} />
+                        </View> : 
+                    <Text>Data Not Loaded Yet</Text>
                 }
-                <Text style={styles.title}>Vision</Text> 
-                <Button title="Recieve Data" color="#686d76" onPress={() => Alert.alert('Fetching')} />
             </View>
         </ScrollView>
     );
