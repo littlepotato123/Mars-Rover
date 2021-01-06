@@ -1,2 +1,5 @@
-API: https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+API
+    - Home Page: https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
+    - Live Updates: https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=DEMO_KEY
 Video Link: https://www.youtube.com/watch?v=6B_6K-splRU
+Live Update Texts: http://www.ustream.tv/nasajpl?fbclid=IwAR2zThsY5IOksPojJyr0_kuLFqyoN45Fy9SBFKuqEidsNXt_RtdUyXU9YJw
