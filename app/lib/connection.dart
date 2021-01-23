@@ -19,7 +19,6 @@ class SelectBondedDevicePage extends StatefulWidget {
 }
 
 enum _DeviceAvailability {
-  no,
   maybe,
   yes,
 }
@@ -68,14 +67,6 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
             .toList();
       });
     });
-  }
-
-  void _restartDiscovery() {
-    setState(() {
-      _isDiscovering = true;
-    });
-
-    _startDiscovery();
   }
 
   void _startDiscovery() {
