@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(App());
 }
 
-class MainApp extends StatelessWidget {
+class App extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Text('Hi');
+    return MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.blueGrey,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Mars Rover Controller'),
+            centerTitle: true,
+          ),
+        ));
   }
 }
