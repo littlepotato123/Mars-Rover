@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.blueGrey,
+        brightness: Brightness.dark,
       ),
       home: FutureBuilder(
         future: FlutterBluetoothSerial.instance.requestEnable(),
@@ -48,23 +48,24 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        title: Text('Connection'),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Connection'),
+        ),
+        body: SelectBondedDevicePage(
+          onCahtPage: (device1) {
+            BluetoothDevice device = device1;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return ChatPage(server: device);
+                },
+              ),
+            );
+          },
+        ),
       ),
-      body: SelectBondedDevicePage(
-        onCahtPage: (device1) {
-          BluetoothDevice device = device1;
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return ChatPage(server: device);
-              },
-            ),
-          );
-        },
-      ),
-    ));
+    );
   }
 }
