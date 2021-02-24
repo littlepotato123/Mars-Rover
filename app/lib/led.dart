@@ -114,8 +114,9 @@ class _ChatPage extends State<ChatPage> {
                     ? Text(widget.server.name)
                     : Text(widget.server.name)),
             RaisedButton(
+              color: Colors.blue[400],
               onPressed: isConnected ? () => _sendMessage('5') : null,
-              child: Text('Rotate Motor'),
+              child: Text('Rotate'),
             ),
           ],
         ),
@@ -131,35 +132,57 @@ class _ChatPage extends State<ChatPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RaisedButton(
+                        Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: RaisedButton(
                             onPressed:
                                 isConnected ? () => _sendMessage('1') : null,
-                            child: Text('Led On')),
-                        RaisedButton(
+                            child: Text('LED ON'),
+                            color: Colors.blue[400],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: RaisedButton(
                             onPressed:
                                 isConnected ? () => _sendMessage('0') : null,
-                            child: Text('Led Off')),
+                            child: Text('LED OFF'),
+                            color: Colors.blue[400],
+                          ),
+                        ),
                       ],
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RaisedButton(
-                          onPressed:
-                              isConnected ? () => _sendMessage('2') : null,
-                          child: Text('0 Degrees'),
+                        Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: RaisedButton(
+                            onPressed:
+                                isConnected ? () => _sendMessage('2') : null,
+                            child: Text('0'),
+                            color: Colors.blue[400],
+                          ),
                         ),
-                        RaisedButton(
-                          onPressed:
-                              isConnected ? () => _sendMessage('3') : null,
-                          child: Text('90 Degrees'),
+                        Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: RaisedButton(
+                            onPressed:
+                                isConnected ? () => _sendMessage('3') : null,
+                            child: Text('90'),
+                            color: Colors.blue[400],
+                          ),
                         ),
-                        RaisedButton(
-                          onPressed:
-                              isConnected ? () => _sendMessage('4') : null,
-                          child: Text('180 Degrees'),
+                        Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: RaisedButton(
+                            onPressed:
+                                isConnected ? () => _sendMessage('4') : null,
+                            child: Text('180'),
+                            color: Colors.blue[400],
+                          ),
                         ),
                       ],
                     )
@@ -173,36 +196,6 @@ class _ChatPage extends State<ChatPage> {
                   controller: listScrollController,
                   children: list),
             ),
-            Row(
-              children: <Widget>[
-                Flexible(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 16.0),
-                    child: TextField(
-                      style: const TextStyle(fontSize: 15.0),
-                      controller: textEditingController,
-                      decoration: InputDecoration.collapsed(
-                        hintText: isConnecting
-                            ? 'Wait until connected...'
-                            : isConnected
-                                ? 'Type your message...'
-                                : 'Chat got disconnected',
-                        hintStyle: const TextStyle(color: Colors.grey),
-                      ),
-                      enabled: isConnected,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(Icons.send),
-                      onPressed: isConnected
-                          ? () => _sendMessage(textEditingController.text)
-                          : null),
-                ),
-              ],
-            )
           ],
         ),
       ),
