@@ -1,7 +1,7 @@
 #include <Servo.h>
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-int LED = 12;
+int LED = 13;
 
 SoftwareSerial hc(6, 7);
 
@@ -22,7 +22,7 @@ void write(int a,int b,int c,int d){
 
 void leave() {
   servo.write(20);
-  digitalWrite(LED, HIGH);
+  digitalWrite(LED, LOW);
 }
 
 void setup() {
@@ -70,11 +70,11 @@ void loop() {
   if(hc.available()){
     int value = hc.read();
     if (value == '0') {
-      digitalWrite(LED, HIGH);
+      digitalWrite(LED, LOW);
       hc.println("LED is OFF");
     }
     else if (value == '1') {
-      digitalWrite(LED, LOW);
+      digitalWrite(LED, HIGH);
       hc.println("LED is ON");
     }
     else if (value == '2') {
